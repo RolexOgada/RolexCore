@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.collince.rolexcore.app.R;
+
 
 public class MainActivity extends AppCompatActivity {
 

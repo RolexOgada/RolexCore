@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.collince.rolexcore'
+    namespace 'com.collince.rolexcore.library'
     compileSdk 34
 
     defaultConfig {
@@ -21,8 +21,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
@@ -42,7 +42,7 @@ afterEvaluate {
 
                 groupId = 'com.collince'
                 artifactId = 'rolexcore'
-                version = '1.0.0'
+                version = '1.1.1'
             }
         }
     }
