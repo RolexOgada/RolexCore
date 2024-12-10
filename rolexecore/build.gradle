@@ -43,7 +43,7 @@ afterEvaluate {
                 from components.findByName('release')
 
                 // Explicitly add the .aar file from libs directory
-                artifact("libs/rolexecore-release.aar") {
+                artifact("build/outputs/aar/rolexecore-debug.aar") {
                     builtBy tasks.named("assembleRelease")
                 }
 
