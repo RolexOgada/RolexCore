@@ -30,7 +30,7 @@ public class GameActivity extends AppCompatActivity {
     //--------------------------------------------------------
     // Getter and Setter
     //--------------------------------------------------------
-    public Core getEngine() {
+    public Core getCore() {
         return mCore;
     }
 
