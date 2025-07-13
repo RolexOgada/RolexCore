@@ -1,6 +1,6 @@
 package com.collince.rolexcore.camera;
 
-import com.collince.rolexcore.util.exception.EngineRuntimeException;
+import com.collince.rolexcore.util.exception.CoreRuntimeException;
 import com.collince.rolexcore.util.ResolutionUtils;
 
 
@@ -144,7 +144,7 @@ public abstract class BaseCamera implements Camera {
             case CAMERA:
                 return 1;
             default:
-                throw new EngineRuntimeException("CoordinateType not found!");
+                throw new CoreRuntimeException("CoordinateType not found!");
         }
     }
 
@@ -156,7 +156,7 @@ public abstract class BaseCamera implements Camera {
             case CAMERA:
                 return getScreenWidth() / 2f - (mCameraWidth / 2f - worldX) * mPixelFactor;
             default:
-                throw new EngineRuntimeException("CoordinateType not found!");
+                throw new CoreRuntimeException("CoordinateType not found!");
         }
     }
 
@@ -168,7 +168,7 @@ public abstract class BaseCamera implements Camera {
             case CAMERA:
                 return getScreenHeight() / 2f - (mCameraHeight / 2f - worldY) * mPixelFactor;
             default:
-                throw new EngineRuntimeException("CoordinateType not found!");
+                throw new CoreRuntimeException("CoordinateType not found!");
         }
     }
 
@@ -180,7 +180,7 @@ public abstract class BaseCamera implements Camera {
             case CAMERA:
                 return mCameraWidth / 2f - (getScreenWidth() / 2f - screenX) / mPixelFactor;
             default:
-                throw new EngineRuntimeException("CoordinateType not found!");
+                throw new CoreRuntimeException("CoordinateType not found!");
         }
     }
 
@@ -192,7 +192,7 @@ public abstract class BaseCamera implements Camera {
             case CAMERA:
                 return mCameraHeight / 2f - (getScreenHeight() / 2f - screenY) / mPixelFactor;
             default:
-                throw new EngineRuntimeException("CoordinateType not found!");
+                throw new CoreRuntimeException("CoordinateType not found!");
         }
     }
     //========================================================

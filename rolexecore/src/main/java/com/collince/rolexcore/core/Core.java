@@ -20,7 +20,7 @@ import com.collince.rolexcore.scene.Scene;
 import com.collince.rolexcore.scene.SceneController;
 import com.collince.rolexcore.ui.GameView;
 import com.collince.rolexcore.util.debug.Debugger;
-import com.collince.rolexcore.util.exception.EngineRuntimeException;
+import com.collince.rolexcore.util.exception.CoreRuntimeException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -152,7 +152,7 @@ public class Core implements UpdateLoop.UpdateListener, DrawLoop.DrawListener, G
         int listenerCount = mListeners.size();
         for (int i = 0; i < listenerCount; i++) {
             CoreListener listener = mListeners.get(i);
-            listener.onEngineUpdate(elapsedMillis);
+            listener.onCoreUpdate(elapsedMillis);
         }
         synchronized (mDrawables) {
             while (!mUpdatablesToRemove.isEmpty()) {
@@ -187,7 +187,7 @@ public class Core implements UpdateLoop.UpdateListener, DrawLoop.DrawListener, G
         int listenerCount = mListeners.size();
         for (int i = 0; i < listenerCount; i++) {
             CoreListener listener = mListeners.get(i);
-            listener.onEngineDraw(canvas, mCamera);
+            listener.onCoreDraw(canvas, mCamera);
         }
     }
     //========================================================
@@ -197,10 +197,10 @@ public class Core implements UpdateLoop.UpdateListener, DrawLoop.DrawListener, G
     //--------------------------------------------------------
     public void start() {
         if (mGameView == null) {
-            throw new EngineRuntimeException("GameView not found!");
+            throw new CoreRuntimeException("GameView not found!");
         }
         if (mCamera == null) {
-            throw new EngineRuntimeException("Camera not found!");
+            throw new CoreRuntimeException("Camera not found!");
         }
 
         mSceneController.start();
@@ -361,7 +361,7 @@ public class Core implements UpdateLoop.UpdateListener, DrawLoop.DrawListener, G
         int listenerCount = mListeners.size();
         for (int i = 0; i < listenerCount; i++) {
             CoreListener listener = mListeners.get(i);
-            listener.onAddToEngine(updatable);
+            listener.onAddToCore(updatable);
         }
     }
 
@@ -373,16 +373,16 @@ public class Core implements UpdateLoop.UpdateListener, DrawLoop.DrawListener, G
         int listenerCount = mListeners.size();
         for (int i = 0; i < listenerCount; i++) {
             CoreListener listener = mListeners.get(i);
-            listener.onRemoveFromEngine(updatable);
+            listener.onRemoveFromCore(updatable);
         }
     }
 
-    public void addToEngine(Updatable updatable) {
+    public void addToCore(Updatable updatable) {
         if (updatable.isRunning()) {
-            throw new EngineRuntimeException("'" + updatable.getName() + "' is already in the engine!");
+            throw new CoreRuntimeException("'" + updatable.getName() + "' is already in the core!");
         }
         updatable.setRunning(true);
-        // Add to buffer if engine is running
+        // Add to buffer if core is running
         if (isRunning()) {
             mUpdatablesToAdd.add(updatable);
         } else {
@@ -390,12 +390,12 @@ public class Core implements UpdateLoop.UpdateListener, DrawLoop.DrawListener, G
         }
     }
 
-    public void removeFromEngine(Updatable updatable) {
+    public void removeFromCore(Updatable updatable) {
         if (!updatable.isRunning()) {
-            throw new EngineRuntimeException("'" + updatable.getName() + "' is not in the engine!");
+            throw new CoreRuntimeException("'" + updatable.getName() + "' is not in the core!");
         }
         updatable.setRunning(false);
-        // Add to buffer if engine is running
+        // Add to buffer if core is running
         if (isRunning()) {
             if (mUpdatablesToAdd.contains(updatable)) {
                 mUpdatablesToAdd.remove(updatable);
@@ -408,26 +408,26 @@ public class Core implements UpdateLoop.UpdateListener, DrawLoop.DrawListener, G
     }
 
     public void addToScene(Updatable updatable) {
-        addToEngine(updatable);
+        addToCore(updatable);
         Scene scene = mSceneController.getCurrentScene();
         if (scene == null) {
-            throw new EngineRuntimeException("Scene not found!");
+            throw new CoreRuntimeException("Scene not found!");
         }
         if (scene.getAllChild().contains(updatable)) {
-            throw new EngineRuntimeException("'" + updatable.getName()
+            throw new CoreRuntimeException("'" + updatable.getName()
                     + "' is already in the scene '" + scene.getName() + "'!");
         }
         scene.addToScene(updatable);
     }
 
     public void removeFromScene(Updatable updatable) {
-        removeFromEngine(updatable);
+        removeFromCore(updatable);
         Scene scene = mSceneController.getCurrentScene();
         if (scene == null) {
-            throw new EngineRuntimeException("Scene not found!");
+            throw new CoreRuntimeException("Scene not found!");
         }
         if (!scene.getAllChild().contains(updatable)) {
-            throw new EngineRuntimeException("'" + updatable.getName()
+            throw new CoreRuntimeException("'" + updatable.getName()
                     + "' is not in the scene '" + scene.getName() + "'!");
         }
         scene.removeFromScene(updatable);

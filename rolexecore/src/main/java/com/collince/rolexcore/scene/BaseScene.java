@@ -1,7 +1,7 @@
 package com.collince.rolexcore.scene;
 
 import com.collince.rolexcore.entity.Updatable;
-import com.collince.rolexcore.util.exception.EngineRuntimeException;
+import com.collince.rolexcore.util.exception.CoreRuntimeException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +46,7 @@ public abstract class BaseScene implements Scene {
     @Override
     public void startScene() {
         if (mIsRunning) {
-            throw new EngineRuntimeException("'" + getName() + "' is already started!");
+            throw new CoreRuntimeException("'" + getName() + "' is already started!");
         }
         mIsRunning = true;
         mIsPause = false;
@@ -65,7 +65,7 @@ public abstract class BaseScene implements Scene {
     @Override
     public void stopScene() {
         if (!mIsRunning) {
-            throw new EngineRuntimeException("'" + getName() + "' is not started yet!");
+            throw new CoreRuntimeException("'" + getName() + "' is not started yet!");
         }
         mIsRunning = false;
         int updatableCount = mUpdatables.size();
@@ -83,7 +83,7 @@ public abstract class BaseScene implements Scene {
     @Override
     public void pauseScene() {
         if (mIsPause) {
-            throw new EngineRuntimeException("'" + getName() + "' is already paused!");
+            throw new CoreRuntimeException("'" + getName() + "' is already paused!");
         }
         mIsPause = true;
         onPauseScene();
@@ -92,7 +92,7 @@ public abstract class BaseScene implements Scene {
     @Override
     public void resumeScene() {
         if (!mIsPause) {
-            throw new EngineRuntimeException("'" + getName() + "' is not paused yet!");
+            throw new CoreRuntimeException("'" + getName() + "' is not paused yet!");
         }
         mIsPause = false;
         onPauseScene();

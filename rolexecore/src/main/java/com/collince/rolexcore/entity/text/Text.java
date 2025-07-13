@@ -6,7 +6,7 @@ import android.graphics.Typeface;
 
 import com.collince.rolexcore.core.Core;
 import com.collince.rolexcore.entity.shape.RectangleShapeEntity;
-import com.collince.rolexcore.util.exception.EngineRuntimeException;
+import com.collince.rolexcore.util.exception.CoreRuntimeException;
 
 
 
@@ -103,7 +103,7 @@ public class Text extends RectangleShapeEntity {
             case RIGHT:
                 return getWidth() - getTextWidth();
             default:
-                throw new EngineRuntimeException("HorizontalAlign not found!");
+                throw new CoreRuntimeException("HorizontalAlign not found!");
         }
     }
 
@@ -116,7 +116,7 @@ public class Text extends RectangleShapeEntity {
             case BOTTOM:
                 return getHeight() - getTextHeight();
             default:
-                throw new EngineRuntimeException("VerticalAlign not found!");
+                throw new CoreRuntimeException("VerticalAlign not found!");
         }
     }
 

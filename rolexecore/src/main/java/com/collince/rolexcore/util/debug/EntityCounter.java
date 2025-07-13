@@ -39,7 +39,7 @@ public class EntityCounter extends Text implements CoreListener {
     // Overriding methods
     //--------------------------------------------------------
     @Override
-    public void onAddToEngine(Updatable updatable) {
+    public void onAddToCore(Updatable updatable) {
         mEntityCount++;
         String name = updatable.getName();
         if (!mEntityCountMap.containsKey(name)) {
@@ -51,7 +51,7 @@ public class EntityCounter extends Text implements CoreListener {
     }
 
     @Override
-    public void onRemoveFromEngine(Updatable updatable) {
+    public void onRemoveFromCore(Updatable updatable) {
         mEntityCount--;
         String name = updatable.getName();
         if (mEntityCountMap.containsKey(name)) {

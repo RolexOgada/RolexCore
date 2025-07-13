@@ -46,13 +46,13 @@ public abstract class Entity implements Updatable, Releasable {
 
     @Override
     public void addToGame() {
-        mCore.addToEngine(this);
+        mCore.addToCore(this);
         onStart();
     }
 
     @Override
     public void removeFromGame() {
-        mCore.removeFromEngine(this);
+        mCore.removeFromCore(this);
         onRemove();
     }
 

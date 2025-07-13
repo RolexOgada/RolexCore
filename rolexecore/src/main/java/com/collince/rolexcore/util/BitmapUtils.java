@@ -5,7 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
-import com.collince.rolexcore.util.exception.EngineRuntimeException;
+import com.collince.rolexcore.util.exception.CoreRuntimeException;
 
 
 
@@ -133,7 +133,7 @@ public class BitmapUtils {
             case OUT_TO_IN:
                 return createRadiateBitmapRegionsOutIn(src, count);
             default:
-                throw new EngineRuntimeException("BitmapRadiate not found!");
+                throw new CoreRuntimeException("BitmapRadiate not found!");
         }
     }
 

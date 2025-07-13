@@ -9,16 +9,16 @@ import com.collince.rolexcore.entity.Updatable;
 
 public interface CoreListener {
 
-    default void onEngineUpdate(long elapsedMillis) {
+    default void onCoreUpdate(long elapsedMillis) {
     }
 
-    default void onEngineDraw(Canvas canvas, Camera camera) {
+    default void onCoreDraw(Canvas canvas, Camera camera) {
     }
 
-    default void onAddToEngine(Updatable updatable) {
+    default void onAddToCore(Updatable updatable) {
     }
 
-    default void onRemoveFromEngine(Updatable updatable) {
+    default void onRemoveFromCore(Updatable updatable) {
     }
 
 }

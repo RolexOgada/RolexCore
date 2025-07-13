@@ -3,6 +3,11 @@
     <style name="Base.Theme.RolexCore" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- <item name="colorSecondary">@color/my_light_secondary</item> -->
+        <item name="android:statusBarColor">#03A9F4</item>
+        <!--        for failing to show statusbar in API 35+-->
+        <item name="android:windowOptOutEdgeToEdgeEnforcement" tools:ignore="NewApi">true</item>
+
     </style>
 
     <style name="Theme.RolexCore" parent="Base.Theme.RolexCore" />

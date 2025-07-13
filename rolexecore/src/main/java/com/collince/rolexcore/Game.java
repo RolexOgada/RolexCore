@@ -35,7 +35,7 @@ public class Game {
         return mGameView;
     }
 
-    public Core getEngine() {
+    public Core getCore() {
         return mCore;
     }
     //========================================================
